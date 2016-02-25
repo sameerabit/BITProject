@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER" />
+
+    <input name="id" />
+    <input name="person" />
+
+    <decision-state id="createOrEdit">
+        <if test="id == ''" then="createCustomer" else="editCustomer" />
+    </decision-state>
+
+    <action-state id="createCustomer">
+        <evaluate expression="CustomerBean" result="flowScope.Customer" />
+        <transition to="CustomerForm" />
+    </action-state>
+
+    <action-state id="editCustomer">
+        <evaluate expression="person.findCustomerById(id)" result="flowScope.Customer" />
+        <transition to="CustomerForm" />
+    </action-state>
+
+    <view-state id="CustomerForm" model="Customer" view="/customer/form">
+        <transition on="save" to="saveCustomer" />
+        <transition on="cancel" to="cancelCustomer" bind="false" />
+    </view-state>
+
+    <end-state id="saveCustomer">
+        <output name="Customer" value="Customer"/>
+    </end-state>
+
+    <end-state id="cancelCustomer" />
+
+</flow>

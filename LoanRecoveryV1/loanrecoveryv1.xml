@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="loanrecoveryv1" default="all">
+  
+  
+  <property file="loanrecoveryv1.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/charsets.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/compilefontconfig.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/dnsns.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/icedtea-sound.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/localedata.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunpkcs11.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/zipfs.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/javazic.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jce.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jsse.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/management-agent.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/resources.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rhino.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_antlr:antlr:2.7.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-access:1.1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-access/1.1.2/logback-access-1.1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-classic:1.1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.1.2/logback-classic-1.1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-core:1.1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.1.2/logback-core-1.1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.5.0/jackson-annotations-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.5.0/jackson-core-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.5.0/jackson-databind-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-beanutils:commons-beanutils:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-collections:commons-collections:3.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-digester:commons-digester:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-digester/commons-digester/2.0/commons-digester-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-lang:commons-lang:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:99.0-does-not-exist.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/99.0-does-not-exist/commons-logging-99.0-does-not-exist.jar"/>
+  </path>
+  
+  <path id="library.maven:_dom4j:dom4j:1.6.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.servlet.jsp:jsp-api:2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/jsp/jsp-api/2.2/jsp-api-2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.servlet:jstl:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/jstl/1.2/jstl-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_joda-time:joda-time:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/2.7/joda-time-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_mysql:mysql-connector-java:5.1.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.9/mysql-connector-java-5.1.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sf.ehcache:ehcache-core:2.4.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache-core/2.4.3/ehcache-core-2.4.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_opensymphony:ognl:2.6.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/opensymphony/ognl/2.6.11/ognl-2.6.11.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.geronimo.specs:geronimo-servlet_3.0_spec:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/geronimo/specs/geronimo-servlet_3.0_spec/1.0/geronimo-servlet_3.0_spec-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tiles:tiles-api:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tiles/tiles-api/2.2.2/tiles-api-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tiles:tiles-core:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tiles/tiles-core/2.2.2/tiles-core-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tiles:tiles-jsp:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tiles/tiles-jsp/2.2.2/tiles-jsp-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tiles:tiles-servlet:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tiles/tiles-servlet/2.2.2/tiles-servlet-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tiles:tiles-template:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tiles/tiles-template/2.2.2/tiles-template-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjrt:1.8.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/aspectj/aspectjrt/1.8.4/aspectjrt-1.8.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjweaver:1.8.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.8.4/aspectjweaver-1.8.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.5.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-core:4.3.8.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-ehcache:4.3.8.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-entitymanager:4.3.8.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.3.8.Final/hibernate-entitymanager-4.3.8.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hsqldb:hsqldb:2.3.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jadira.usertype:usertype.core:3.2.0.ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jadira/usertype/usertype.core/3.2.0.GA/usertype.core-3.2.0.GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jadira.usertype:usertype.spi:3.2.0.ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jadira/usertype/usertype.spi/3.2.0.GA/usertype.spi-3.2.0.GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.javassist:javassist:3.18.1-ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging-annotations:1.2.0.beta1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging:3.1.3.ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss:jandex:1.1.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:jcl-over-slf4j:1.7.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/jcl-over-slf4j/1.7.10/jcl-over-slf4j-1.7.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springbyexample:sbe-dynamic-tiles2:1.2.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springbyexample/sbe-dynamic-tiles2/1.2.4/sbe-dynamic-tiles2-1.2.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-commons:1.9.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/1.9.1.RELEASE/spring-data-commons-1.9.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-jpa:1.7.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-jpa/1.7.1.RELEASE/spring-data-jpa-1.7.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-acl:3.2.5.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-acl/3.2.5.RELEASE/spring-security-acl-3.2.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-config:3.2.5.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-config/3.2.5.RELEASE/spring-security-config-3.2.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-core:3.2.5.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.5.RELEASE/spring-security-core-3.2.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-taglibs:3.2.5.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-taglibs/3.2.5.RELEASE/spring-security-taglibs-3.2.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-web:3.2.5.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.5.RELEASE/spring-security-web-3.2.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.webflow:spring-binding:2.3.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/webflow/spring-binding/2.3.3.RELEASE/spring-binding-2.3.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.webflow:spring-js-resources:2.3.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/webflow/spring-js-resources/2.3.3.RELEASE/spring-js-resources-2.3.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.webflow:spring-js:2.3.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/webflow/spring-js/2.3.3.RELEASE/spring-js-2.3.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.webflow:spring-webflow:2.3.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/webflow/spring-webflow/2.3.3.RELEASE/spring-webflow-2.3.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/4.1.4.RELEASE/spring-aop-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aspects:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/4.1.4.RELEASE/spring-aspects-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/4.1.4.RELEASE/spring-beans-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context-support:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/4.1.4.RELEASE/spring-context-support-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/4.1.4.RELEASE/spring-context-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/4.1.4.RELEASE/spring-core-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/4.1.4.RELEASE/spring-expression-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jdbc:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/4.1.4.RELEASE/spring-jdbc-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-orm:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.4.RELEASE/spring-orm-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-oxm:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-oxm/4.1.4.RELEASE/spring-oxm-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-test:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/4.1.4.RELEASE/spring-test-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-tx:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/4.1.4.RELEASE/spring-tx-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-web:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-web/4.1.4.RELEASE/spring-web-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-webmvc:4.1.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc/4.1.4.RELEASE/spring-webmvc-4.1.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_taglibs:standard:1.1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/taglibs/standard/1.1.2/standard-1.1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_xml-apis:xml-apis:1.0.b2.classpath">
+    <pathelement location="${path.variable.maven_repository}/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_loan-recovery.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.loan-recovery, clean.artifact.loanrecoveryv1:war_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.loan-recovery" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.loanrecoveryv1:war" value="${basedir}/target"/>
+    <property name="artifact.output.loanrecoveryv1:war_exploded" value="${basedir}/target/micro"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.micro.war" value="${artifacts.temp.dir}/micro.war"/>
+  </target>
+  
+  <target name="clean.artifact.loanrecoveryv1:war_exploded" description="clean LoanRecoveryV1:war exploded artifact output">
+    <delete dir="${artifact.output.loanrecoveryv1:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.loanrecoveryv1:war" depends="init.artifacts, artifact.loanrecoveryv1:war_exploded" description="Build &#39;LoanRecoveryV1:war&#39; artifact">
+    <property name="artifact.temp.output.loanrecoveryv1:war" value="${artifacts.temp.dir}/LoanRecoveryV1_war"/>
+    <mkdir dir="${artifact.temp.output.loanrecoveryv1:war}"/>
+    <zip destfile="${temp.jar.path.micro.war}">
+      <zipfileset dir="${artifact.temp.output.loanrecoveryv1:war_exploded}"/>
+    </zip>
+    <copy file="${temp.jar.path.micro.war}" tofile="${artifact.temp.output.loanrecoveryv1:war}/micro.war"/>
+  </target>
+  
+  <target name="artifact.loanrecoveryv1:war_exploded" depends="init.artifacts, compile.module.loan-recovery" description="Build &#39;LoanRecoveryV1:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}"/>
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/classes">
+      <fileset dir="${loan-recovery.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib"/>
+    <copy file="${path.variable.maven_repository}/org/springbyexample/sbe-dynamic-tiles2/1.2.4/sbe-dynamic-tiles2-1.2.4.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/sbe-dynamic-tiles2-1.2.4.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tiles/tiles-api/2.2.2/tiles-api-2.2.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/tiles-api-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tiles/tiles-core/2.2.2/tiles-core-2.2.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/tiles-core-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-digester/commons-digester/2.0/commons-digester-2.0.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/commons-digester-2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/commons-beanutils-1.9.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tiles/tiles-jsp/2.2.2/tiles-jsp-2.2.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/tiles-jsp-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tiles/tiles-servlet/2.2.2/tiles-servlet-2.2.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/tiles-servlet-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tiles/tiles-template/2.2.2/tiles-template-2.2.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/tiles-template-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/webflow/spring-js/2.3.3.RELEASE/spring-js-2.3.3.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-js-2.3.3.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/webflow/spring-js-resources/2.3.3.RELEASE/spring-js-resources-2.3.3.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-js-resources-2.3.3.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/webflow/spring-webflow/2.3.3.RELEASE/spring-webflow-2.3.3.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-webflow-2.3.3.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/opensymphony/ognl/2.6.11/ognl-2.6.11.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/ognl-2.6.11.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/webflow/spring-binding/2.3.3.RELEASE/spring-binding-2.3.3.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-binding-2.3.3.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-expression/4.1.4.RELEASE/spring-expression-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-expression-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.9/mysql-connector-java-5.1.9.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/mysql-connector-java-5.1.9.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-aspects/4.1.4.RELEASE/spring-aspects-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-aspects-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-oxm/4.1.4.RELEASE/spring-oxm-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-oxm-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-web/4.1.4.RELEASE/spring-web-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-web-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-webmvc/4.1.4.RELEASE/spring-webmvc-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-webmvc-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/security/spring-security-acl/3.2.5.RELEASE/spring-security-acl-3.2.5.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-security-acl-3.2.5.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/aopalliance-1.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/security/spring-security-config/3.2.5.RELEASE/spring-security-config-3.2.5.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-security-config-3.2.5.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.5.RELEASE/spring-security-core-3.2.5.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-security-core-3.2.5.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/security/spring-security-taglibs/3.2.5.RELEASE/spring-security-taglibs-3.2.5.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-security-taglibs-3.2.5.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.5.RELEASE/spring-security-web-3.2.5.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-security-web-3.2.5.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/data/spring-data-jpa/1.7.1.RELEASE/spring-data-jpa-1.7.1.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-data-jpa-1.7.1.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/1.9.1.RELEASE/spring-data-commons-1.9.1.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-data-commons-1.9.1.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.5.0/jackson-databind-2.5.0.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jackson-databind-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.5.0/jackson-annotations-2.5.0.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jackson-annotations-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.5.0/jackson-core-2.5.0.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jackson-core-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jadira/usertype/usertype.core/3.2.0.GA/usertype.core-3.2.0.GA.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/usertype.core-3.2.0.GA.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jadira/usertype/usertype.spi/3.2.0.GA/usertype.spi-3.2.0.GA.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/usertype.spi-3.2.0.GA.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hsqldb-2.3.2.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/servlet/jstl/1.2/jstl-1.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jstl-1.2.jar"/>
+    <copy file="${path.variable.maven_repository}/taglibs/standard/1.1.2/standard-1.1.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/standard-1.1.2.jar"/>
+    <copy file="${path.variable.maven_repository}/ch/qos/logback/logback-access/1.1.2/logback-access-1.1.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/logback-access-1.1.2.jar"/>
+    <copy file="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.1.2/logback-core-1.1.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/logback-core-1.1.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-jdbc/4.1.4.RELEASE/spring-jdbc-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-jdbc-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.4.RELEASE/spring-orm-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-orm-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-tx/4.1.4.RELEASE/spring-tx-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-tx-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hibernate-core-4.3.8.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jboss-logging-3.1.3.GA.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/dom4j-1.6.1.jar"/>
+    <copy file="${path.variable.maven_repository}/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/xml-apis-1.0.b2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hibernate-commons-annotations-4.0.5.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+    <copy file="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/antlr-2.7.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jandex-1.1.0.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hibernate-ehcache-4.3.8.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/net/sf/ehcache/ehcache-core/2.4.3/ehcache-core-2.4.3.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/ehcache-core-2.4.3.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/hibernate-entitymanager/4.3.8.Final/hibernate-entitymanager-4.3.8.Final.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/hibernate-entitymanager-4.3.8.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/joda-time/joda-time/2.7/joda-time-2.7.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/joda-time-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-aop/4.1.4.RELEASE/spring-aop-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-aop-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-beans/4.1.4.RELEASE/spring-beans-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-beans-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-context/4.1.4.RELEASE/spring-context-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-context-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-context-support/4.1.4.RELEASE/spring-context-support-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-context-support-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-core/4.1.4.RELEASE/spring-core-4.1.4.RELEASE.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/spring-core-4.1.4.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/aspectj/aspectjrt/1.8.4/aspectjrt-1.8.4.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/aspectjrt-1.8.4.jar"/>
+    <copy file="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.8.4/aspectjweaver-1.8.4.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/aspectjweaver-1.8.4.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/commons-collections-3.2.1.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/commons-lang-2.6.jar"/>
+    <copy file="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/slf4j-api-1.7.10.jar"/>
+    <copy file="${path.variable.maven_repository}/org/slf4j/jcl-over-slf4j/1.7.10/jcl-over-slf4j-1.7.10.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/jcl-over-slf4j-1.7.10.jar"/>
+    <copy file="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.1.2/logback-classic-1.1.2.jar" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/lib/logback-classic-1.1.2.jar"/>
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}/META-INF"/>
+    <copy file="${basedir}/target/micro/META-INF/MANIFEST.MF" tofile="${artifact.output.loanrecoveryv1:war_exploded}/META-INF/MANIFEST.MF"/>
+    <copy todir="${artifact.output.loanrecoveryv1:war_exploded}">
+      <fileset dir="${basedir}/src/main/webapp"/>
+    </copy>
+    <mkdir dir="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.loanrecoveryv1:war_exploded}/WEB-INF/web.xml"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.loanrecoveryv1:war, artifact.loanrecoveryv1:war_exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.loanrecoveryv1:war}"/>
+    <copy todir="${artifact.output.loanrecoveryv1:war}">
+      <fileset dir="${artifact.temp.output.loanrecoveryv1:war}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
